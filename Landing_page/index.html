@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Land — Cafetería de especialidad</title>
+  <meta name="description" content="Secret Land es una cafetería de especialidad. Reserva tu mesa en línea en menos de un minuto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%232B211C'/><text x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23F5F1EA' text-anchor='middle'>S</text></svg>">
+</head>
+<body>
+
+  <!-- Navegación -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#inicio" class="brand" aria-label="Secret Land, inicio">
+        <span class="brand__mark" aria-hidden="true">S</span>
+        <span class="brand__name">Secret Land</span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#menu">Menú</a>
+        <a href="#visitanos">Visítanos</a>
+      </nav>
+      <a href="#reservar" class="btn btn--small">Reservar</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero__inner">
+        <p class="eyebrow reveal">Cafetería de especialidad</p>
+        <h1 class="hero__title reveal">Un lugar que<br>se descubre<br><em>una taza a la vez.</em></h1>
+        <p class="hero__lead reveal">Café de origen, tostado en pequeños lotes y servido sin prisa. Reserva tu mesa y guarda un momento solo para ti.</p>
+        <div class="hero__actions reveal">
+          <a href="#reservar" class="btn">Reservar una mesa</a>
+          <a href="#menu" class="link-arrow">Ver el menú <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="200" r="199" stroke="currentColor" stroke-opacity=".14"/>
+          <circle cx="200" cy="200" r="150" stroke="currentColor" stroke-opacity=".10"/>
+          <path d="M130 190h120v40a60 60 0 0 1-60 60 60 60 0 0 1-60-60v-40Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M250 205h14a20 20 0 0 1 0 40h-18" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M110 305h180" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="steam" d="M165 170c-10-14 10-22 0-38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="steam steam--2" d="M190 170c-10-14 10-22 0-38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="steam steam--3" d="M215 170c-10-14 10-22 0-38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section class="section" id="experiencia">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">La experiencia</p>
+          <h2 class="section__title">Pocas cosas, bien hechas.</h2>
+        </div>
+        <div class="features">
+          <article class="feature reveal">
+            <span class="feature__num">01</span>
+            <h3>Origen trazable</h3>
+            <p>Trabajamos directamente con fincas de altura. Sabemos quién cultivó cada grano que servimos.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">02</span>
+            <h3>Tueste propio</h3>
+            <p>Tostamos cada semana en lotes pequeños para que el café llegue a tu taza en su mejor punto.</p>
+          </article>
+          <article class="feature reveal">
+            <span class="feature__num">03</span>
+            <h3>Espacio tranquilo</h3>
+            <p>Mesas limitadas, luz cálida y música baja. Reservar garantiza tu lugar sin esperas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menú -->
+    <section class="section section--alt" id="menu">
+      <div class="container menu">
+        <div class="section__head reveal">
+          <p class="eyebrow">Menú</p>
+          <h2 class="section__title">Nuestra selección.</h2>
+          <p class="section__lead">Una carta breve que cambia con la temporada.</p>
+        </div>
+        <div class="menu__grid">
+          <div class="menu__col reveal">
+            <h3 class="menu__cat">Café</h3>
+            <ul class="menu__list">
+              <li><span>Espresso</span><span class="dots"></span><span>$45</span></li>
+              <li><span>Flat white</span><span class="dots"></span><span>$65</span></li>
+              <li><span>Cappuccino</span><span class="dots"></span><span>$60</span></li>
+              <li><span>Método V60</span><span class="dots"></span><span>$75</span></li>
+              <li><span>Cold brew</span><span class="dots"></span><span>$70</span></li>
+            </ul>
+          </div>
+          <div class="menu__col reveal">
+            <h3 class="menu__cat">Para acompañar</h3>
+            <ul class="menu__list">
+              <li><span>Croissant de mantequilla</span><span class="dots"></span><span>$55</span></li>
+              <li><span>Pan de plátano</span><span class="dots"></span><span>$60</span></li>
+              <li><span>Tostada de aguacate</span><span class="dots"></span><span>$120</span></li>
+              <li><span>Tarta de queso vasca</span><span class="dots"></span><span>$95</span></li>
+              <li><span>Galleta de chocolate</span><span class="dots"></span><span>$40</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservación -->
+    <section class="section" id="reservar">
+      <div class="container booking">
+        <div class="booking__intro reveal">
+          <p class="eyebrow">Reservaciones</p>
+          <h2 class="section__title">Aparta tu mesa.</h2>
+          <p class="section__lead">Elige el día, la hora y cuántas personas vienen. Te confirmaremos por correo electrónico.</p>
+          <ul class="booking__notes">
+            <li>Reservas para 1 a 8 personas.</li>
+            <li>Mantenemos tu mesa 15 minutos.</li>
+            <li>Para grupos mayores, escríbenos directamente.</li>
+          </ul>
+        </div>
+
+        <div class="booking__card reveal">
+          <form class="form" id="booking-form" novalidate>
+            <div class="form__row">
+              <div class="field">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" autocomplete="name" required minlength="2" placeholder="Ana García">
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form__row form__row--2">
+              <div class="field">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" autocomplete="email" required placeholder="ana@correo.com">
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" required placeholder="55 1234 5678">
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form__row form__row--3">
+              <div class="field">
+                <label for="date">Fecha</label>
+                <input type="date" id="date" name="date" required>
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="time">Hora</label>
+                <select id="time" name="time" required disabled>
+                  <option value="">Elige una fecha</option>
+                </select>
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="guests">Personas</label>
+                <select id="guests" name="guests" required>
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field">
+                <label for="notes">Comentarios <span class="optional">(opcional)</span></label>
+                <textarea id="notes" name="notes" rows="3" maxlength="300" placeholder="Ocasión especial, alergias, preferencia de mesa…"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn--block">Confirmar reservación</button>
+            <p class="form__legal">Al reservar aceptas que usemos tus datos solo para gestionar tu visita.</p>
+          </form>
+
+          <div class="success" id="booking-success" hidden tabindex="-1">
+            <div class="success__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>¡Reservación recibida!</h3>
+            <p id="success-summary"></p>
+            <p class="success__small">Te enviaremos la confirmación a <strong id="success-email"></strong>.</p>
+            <button type="button" class="btn btn--ghost" id="booking-reset">Hacer otra reservación</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visítanos -->
+    <section class="section section--alt" id="visitanos">
+      <div class="container visit">
+        <div class="visit__block reveal">
+          <p class="eyebrow">Dirección</p>
+          <p class="visit__text">Calle de los Almendros 24<br>Col. Centro, Ciudad</p>
+          <a class="link-arrow" href="https://maps.google.com/?q=Calle+de+los+Almendros+24" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="visit__block reveal">
+          <p class="eyebrow">Horario</p>
+          <ul class="hours">
+            <li><span>Lunes a viernes</span><span>7:00 – 20:00</span></li>
+            <li><span>Sábado y domingo</span><span>8:00 – 21:00</span></li>
+          </ul>
+        </div>
+        <div class="visit__block reveal">
+          <p class="eyebrow">Contacto</p>
+          <p class="visit__text">
+            <a href="tel:+525512345678">+52 55 1234 5678</a><br>
+            <a href="mailto:hola@secretland.cafe">hola@secretland.cafe</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#inicio" class="brand brand--light">
+        <span class="brand__mark" aria-hidden="true">S</span>
+        <span class="brand__name">Secret Land</span>
+      </a>
+      <p>© <span id="year"></span> Secret Land. Todos los derechos reservados.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
