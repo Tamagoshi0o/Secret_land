@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secret Land — Cafetería de especialidad</title>
-  <meta name="description" content="Secret Land es una cafetería de especialidad. Reserva tu mesa en línea en menos de un minuto.">
+  <title>Secret Land — Café de especialidad y máquinas de café</title>
+  <meta name="description" content="Secret Land vende café de especialidad y máquinas de espresso para hogar, oficinas y negocios. Agenda una asesoría, demostración o servicio técnico en línea.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,11 +21,12 @@
         <span class="brand__name">Secret Land</span>
       </a>
       <nav class="nav__links" aria-label="Principal">
-        <a href="#experiencia">Experiencia</a>
-        <a href="#menu">Menú</a>
-        <a href="#visitanos">Visítanos</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#contacto">Contacto</a>
       </nav>
-      <a href="#reservar" class="btn btn--small">Reservar</a>
+      <a href="#agendar" class="btn btn--small">Agendar cita</a>
     </div>
   </header>
 
@@ -33,109 +34,181 @@
     <!-- Hero -->
     <section class="hero" id="inicio">
       <div class="container hero__inner">
-        <p class="eyebrow reveal">Cafetería de especialidad</p>
-        <h1 class="hero__title reveal">Un lugar que<br>se descubre<br><em>una taza a la vez.</em></h1>
-        <p class="hero__lead reveal">Café de origen, tostado en pequeños lotes y servido sin prisa. Reserva tu mesa y guarda un momento solo para ti.</p>
+        <p class="eyebrow reveal">Café de especialidad · Máquinas de espresso</p>
+        <h1 class="hero__title reveal">El café que sirves<br>empieza con<br><em>el equipo correcto.</em></h1>
+        <p class="hero__lead reveal">Seleccionamos granos de origen y máquinas profesionales para tu hogar, oficina o negocio. Agenda una asesoría y te ayudamos a elegir, instalar y mantener todo.</p>
         <div class="hero__actions reveal">
-          <a href="#reservar" class="btn">Reservar una mesa</a>
-          <a href="#menu" class="link-arrow">Ver el menú <span aria-hidden="true">→</span></a>
+          <a href="#agendar" class="btn">Agendar una asesoría</a>
+          <a href="#catalogo" class="link-arrow">Ver catálogo <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="hero__art" aria-hidden="true">
         <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="200" cy="200" r="199" stroke="currentColor" stroke-opacity=".14"/>
           <circle cx="200" cy="200" r="150" stroke="currentColor" stroke-opacity=".10"/>
-          <path d="M130 190h120v40a60 60 0 0 1-60 60 60 60 0 0 1-60-60v-40Z" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M250 205h14a20 20 0 0 1 0 40h-18" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M110 305h180" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="steam" d="M165 170c-10-14 10-22 0-38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="steam steam--2" d="M190 170c-10-14 10-22 0-38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="steam steam--3" d="M215 170c-10-14 10-22 0-38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Calientatazas -->
+            <rect x="112" y="104" width="176" height="20" rx="5"/>
+            <!-- Cuerpo -->
+            <path d="M128 124h144a8 8 0 0 1 8 8v170a8 8 0 0 1-8 8H128a8 8 0 0 1-8-8V132a8 8 0 0 1 8-8Z"/>
+            <!-- Manómetro y botones -->
+            <circle cx="236" cy="168" r="18"/>
+            <path d="M236 168l10-8"/>
+            <circle cx="160" cy="160" r="6"/>
+            <circle cx="160" cy="184" r="6"/>
+            <!-- Hueco de extracción -->
+            <rect x="138" y="218" width="124" height="82" rx="4"/>
+            <!-- Grupo y portafiltro -->
+            <rect x="165" y="218" width="50" height="10" rx="2"/>
+            <path d="M172 228h36v6a4 4 0 0 1-4 4h-28a4 4 0 0 1-4-4v-6Z"/>
+            <path d="M208 232h40"/>
+            <!-- Chorro de café -->
+            <path class="pour" d="M190 242v22"/>
+            <!-- Taza -->
+            <path d="M174 266h32v8a16 16 0 0 1-32 0v-8Z"/>
+            <path d="M206 270h5a6 6 0 0 1 0 12h-7"/>
+            <!-- Bandeja -->
+            <path d="M146 294h108"/>
+            <!-- Vaporizador -->
+            <path d="M120 196h-10v56a6 6 0 0 0 6 6"/>
+            <!-- Base -->
+            <path d="M96 322h208"/>
+          </g>
         </svg>
       </div>
     </section>
 
-    <!-- Experiencia -->
-    <section class="section" id="experiencia">
+    <!-- Servicios -->
+    <section class="section" id="servicios">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">La experiencia</p>
-          <h2 class="section__title">Pocas cosas, bien hechas.</h2>
+          <p class="eyebrow">Lo que hacemos</p>
+          <h2 class="section__title">Del grano a la taza, en un solo lugar.</h2>
         </div>
         <div class="features">
           <article class="feature reveal">
             <span class="feature__num">01</span>
-            <h3>Origen trazable</h3>
-            <p>Trabajamos directamente con fincas de altura. Sabemos quién cultivó cada grano que servimos.</p>
+            <h3>Café de origen</h3>
+            <p>Granos de fincas de altura, tostados cada semana en lotes pequeños. En grano o molido a la medida de tu método.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__num">02</span>
-            <h3>Tueste propio</h3>
-            <p>Tostamos cada semana en lotes pequeños para que el café llegue a tu taza en su mejor punto.</p>
+            <h3>Máquinas y molinos</h3>
+            <p>Equipos de espresso para casa y uso profesional. Te recomendamos el que se ajusta a tu volumen y presupuesto.</p>
           </article>
           <article class="feature reveal">
             <span class="feature__num">03</span>
-            <h3>Espacio tranquilo</h3>
-            <p>Mesas limitadas, luz cálida y música baja. Reservar garantiza tu lugar sin esperas.</p>
+            <h3>Instalación y servicio</h3>
+            <p>Instalamos, calibramos y capacitamos a tu equipo. Mantenimiento preventivo y servicio técnico cuando lo necesites.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Menú -->
-    <section class="section section--alt" id="menu">
-      <div class="container menu">
+    <!-- Catálogo -->
+    <section class="section section--alt" id="catalogo">
+      <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">Menú</p>
-          <h2 class="section__title">Nuestra selección.</h2>
-          <p class="section__lead">Una carta breve que cambia con la temporada.</p>
+          <p class="eyebrow">Catálogo</p>
+          <h2 class="section__title">Una selección breve y cuidada.</h2>
+          <p class="section__lead">Estos son algunos de nuestros productos. En la cita te mostramos el catálogo completo y precios por volumen.</p>
         </div>
-        <div class="menu__grid">
-          <div class="menu__col reveal">
-            <h3 class="menu__cat">Café</h3>
-            <ul class="menu__list">
-              <li><span>Espresso</span><span class="dots"></span><span>$45</span></li>
-              <li><span>Flat white</span><span class="dots"></span><span>$65</span></li>
-              <li><span>Cappuccino</span><span class="dots"></span><span>$60</span></li>
-              <li><span>Método V60</span><span class="dots"></span><span>$75</span></li>
-              <li><span>Cold brew</span><span class="dots"></span><span>$70</span></li>
+        <div class="catalog__grid">
+          <div class="catalog__col reveal">
+            <h3 class="catalog__cat">Café en grano</h3>
+            <ul class="catalog__list">
+              <li>
+                <div><span class="item__name">Etiopía Yirgacheffe</span><span class="item__meta">Floral · cítrico · 1 kg</span></div>
+                <span class="item__price">$640</span>
+              </li>
+              <li>
+                <div><span class="item__name">Colombia Huila</span><span class="item__meta">Caramelo · frutos rojos · 1 kg</span></div>
+                <span class="item__price">$560</span>
+              </li>
+              <li>
+                <div><span class="item__name">Chiapas Altura</span><span class="item__meta">Chocolate · nuez · 1 kg</span></div>
+                <span class="item__price">$480</span>
+              </li>
+              <li>
+                <div><span class="item__name">Blend Espresso Secret</span><span class="item__meta">Cacao · panela · cuerpo alto · 1 kg</span></div>
+                <span class="item__price">$450</span>
+              </li>
             </ul>
           </div>
-          <div class="menu__col reveal">
-            <h3 class="menu__cat">Para acompañar</h3>
-            <ul class="menu__list">
-              <li><span>Croissant de mantequilla</span><span class="dots"></span><span>$55</span></li>
-              <li><span>Pan de plátano</span><span class="dots"></span><span>$60</span></li>
-              <li><span>Tostada de aguacate</span><span class="dots"></span><span>$120</span></li>
-              <li><span>Tarta de queso vasca</span><span class="dots"></span><span>$95</span></li>
-              <li><span>Galleta de chocolate</span><span class="dots"></span><span>$40</span></li>
+          <div class="catalog__col reveal">
+            <h3 class="catalog__cat">Máquinas y equipo</h3>
+            <ul class="catalog__list">
+              <li>
+                <div><span class="item__name">Espresso Casa 1G</span><span class="item__meta">1 grupo · para hogar y oficina pequeña</span></div>
+                <span class="item__price">desde $18,900</span>
+              </li>
+              <li>
+                <div><span class="item__name">Espresso Pro 2G</span><span class="item__meta">2 grupos · cafeterías y restaurantes</span></div>
+                <span class="item__price">desde $74,500</span>
+              </li>
+              <li>
+                <div><span class="item__name">Superautomática Office</span><span class="item__meta">Un botón · ideal para oficinas</span></div>
+                <span class="item__price">desde $32,000</span>
+              </li>
+              <li>
+                <div><span class="item__name">Molino de fresas planas</span><span class="item__meta">Molienda por demanda · 64 mm</span></div>
+                <span class="item__price">desde $9,800</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Reservación -->
-    <section class="section" id="reservar">
+    <!-- Clientes -->
+    <section class="section" id="clientes">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Para quién</p>
+          <h2 class="section__title">Soluciones a tu medida.</h2>
+        </div>
+        <div class="segments">
+          <article class="segment reveal">
+            <h3>Hogar</h3>
+            <p>Una máquina compacta, un molino y café fresco cada mes. Te enseñamos a sacar tu primer espresso.</p>
+          </article>
+          <article class="segment reveal">
+            <h3>Oficinas</h3>
+            <p>Equipos superautomáticos, suministro recurrente de café y mantenimiento incluido.</p>
+          </article>
+          <article class="segment reveal">
+            <h3>Cafeterías y restaurantes</h3>
+            <p>Equipo profesional, café a granel, capacitación de baristas y servicio técnico prioritario.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agendar cita -->
+    <section class="section section--alt" id="agendar">
       <div class="container booking">
         <div class="booking__intro reveal">
-          <p class="eyebrow">Reservaciones</p>
-          <h2 class="section__title">Aparta tu mesa.</h2>
-          <p class="section__lead">Elige el día, la hora y cuántas personas vienen. Te confirmaremos por correo electrónico.</p>
+          <p class="eyebrow">Agenda una cita</p>
+          <h2 class="section__title">Hablemos de tu café.</h2>
+          <p class="section__lead">Elige el tipo de cita, cómo prefieres atenderla y el horario que te acomode. Te confirmaremos por correo electrónico.</p>
           <ul class="booking__notes">
-            <li>Reservas para 1 a 8 personas.</li>
-            <li>Mantenemos tu mesa 15 minutos.</li>
-            <li>Para grupos mayores, escríbenos directamente.</li>
+            <li>Las asesorías y catas no tienen costo.</li>
+            <li>Cada cita dura alrededor de una hora.</li>
+            <li>Atendemos en showroom, en tu negocio o por videollamada.</li>
           </ul>
         </div>
 
         <div class="booking__card reveal">
           <form class="form" id="booking-form" novalidate>
-            <div class="form__row">
+            <div class="form__row form__row--2">
               <div class="field">
                 <label for="name">Nombre completo</label>
                 <input type="text" id="name" name="name" autocomplete="name" required minlength="2" placeholder="Ana García">
                 <p class="field__error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="company">Empresa <span class="optional">(opcional)</span></label>
+                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Nombre de tu negocio">
               </div>
             </div>
 
@@ -152,7 +225,39 @@
               </div>
             </div>
 
-            <div class="form__row form__row--3">
+            <div class="form__row">
+              <div class="field">
+                <label for="type">Tipo de cita</label>
+                <select id="type" name="type" required>
+                  <option value="">Selecciona</option>
+                  <option value="asesoria">Asesoría para elegir equipo</option>
+                  <option value="demo">Demostración de una máquina</option>
+                  <option value="cata">Cata de café</option>
+                  <option value="servicio">Servicio técnico o mantenimiento</option>
+                </select>
+                <p class="field__error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <fieldset class="form__row field">
+              <legend>Modalidad</legend>
+              <div class="choices">
+                <label class="choice">
+                  <input type="radio" name="mode" value="showroom" checked>
+                  <span>Showroom</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="mode" value="visita">
+                  <span>En tu negocio</span>
+                </label>
+                <label class="choice">
+                  <input type="radio" name="mode" value="video">
+                  <span>Videollamada</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form__row form__row--2">
               <div class="field">
                 <label for="date">Fecha</label>
                 <input type="date" id="date" name="date" required>
@@ -165,66 +270,53 @@
                 </select>
                 <p class="field__error" aria-live="polite"></p>
               </div>
-              <div class="field">
-                <label for="guests">Personas</label>
-                <select id="guests" name="guests" required>
-                  <option value="1">1</option>
-                  <option value="2" selected>2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                </select>
-                <p class="field__error" aria-live="polite"></p>
-              </div>
             </div>
 
             <div class="form__row">
               <div class="field">
-                <label for="notes">Comentarios <span class="optional">(opcional)</span></label>
-                <textarea id="notes" name="notes" rows="3" maxlength="300" placeholder="Ocasión especial, alergias, preferencia de mesa…"></textarea>
+                <label for="notes">Cuéntanos más <span class="optional">(opcional)</span></label>
+                <textarea id="notes" name="notes" rows="3" maxlength="400" placeholder="Qué equipo tienes, cuántas tazas sirves al día, modelo que te interesa…"></textarea>
               </div>
             </div>
 
-            <button type="submit" class="btn btn--block">Confirmar reservación</button>
-            <p class="form__legal">Al reservar aceptas que usemos tus datos solo para gestionar tu visita.</p>
+            <button type="submit" class="btn btn--block">Agendar cita</button>
+            <p class="form__legal">Al agendar aceptas que usemos tus datos solo para gestionar tu cita.</p>
           </form>
 
           <div class="success" id="booking-success" hidden tabindex="-1">
             <div class="success__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>¡Reservación recibida!</h3>
+            <h3>¡Cita agendada!</h3>
             <p id="success-summary"></p>
             <p class="success__small">Te enviaremos la confirmación a <strong id="success-email"></strong>.</p>
-            <button type="button" class="btn btn--ghost" id="booking-reset">Hacer otra reservación</button>
+            <button type="button" class="btn btn--ghost" id="booking-reset">Agendar otra cita</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Visítanos -->
-    <section class="section section--alt" id="visitanos">
+    <!-- Contacto -->
+    <section class="section" id="contacto">
       <div class="container visit">
         <div class="visit__block reveal">
-          <p class="eyebrow">Dirección</p>
+          <p class="eyebrow">Showroom</p>
           <p class="visit__text">Calle de los Almendros 24<br>Col. Centro, Ciudad</p>
           <a class="link-arrow" href="https://maps.google.com/?q=Calle+de+los+Almendros+24" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">→</span></a>
         </div>
         <div class="visit__block reveal">
-          <p class="eyebrow">Horario</p>
+          <p class="eyebrow">Horario de atención</p>
           <ul class="hours">
-            <li><span>Lunes a viernes</span><span>7:00 – 20:00</span></li>
-            <li><span>Sábado y domingo</span><span>8:00 – 21:00</span></li>
+            <li><span>Lunes a viernes</span><span>9:00 – 18:00</span></li>
+            <li><span>Sábado</span><span>10:00 – 14:00</span></li>
+            <li><span>Domingo</span><span>Cerrado</span></li>
           </ul>
         </div>
         <div class="visit__block reveal">
-          <p class="eyebrow">Contacto</p>
+          <p class="eyebrow">Ventas y soporte</p>
           <p class="visit__text">
             <a href="tel:+525512345678">+52 55 1234 5678</a><br>
-            <a href="mailto:hola@secretland.cafe">hola@secretland.cafe</a>
+            <a href="mailto:ventas@secretland.mx">ventas@secretland.mx</a>
           </p>
         </div>
       </div>
@@ -237,10 +329,10 @@
         <span class="brand__mark" aria-hidden="true">S</span>
         <span class="brand__name">Secret Land</span>
       </a>
-      <p>© <span id="year"></span> Secret Land. Todos los derechos reservados.</p>
+      <p>© <span id="year"></span> Secret Land. Café y equipo profesional.</p>
       <div class="footer__social">
         <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
       </div>
     </div>
   </footer>

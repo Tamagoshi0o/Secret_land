@@ -1,13 +1,32 @@
 (function () {
   "use strict";
 
-  // Horario de reservas: [apertura, última reserva] en horas (0 = domingo)
+  // Horario de citas por día de la semana (0 = domingo): hora de apertura y última cita
   var SCHEDULE = {
-    weekday: { open: 7, lastSlot: 19 },   // lunes a viernes 7:00 – 20:00
-    weekend: { open: 8, lastSlot: 20 }    // sábado y domingo 8:00 – 21:00
+    0: null,                          // domingo cerrado
+    1: { open: 9, lastSlot: 17 },     // lunes a viernes 9:00 – 18:00
+    2: { open: 9, lastSlot: 17 },
+    3: { open: 9, lastSlot: 17 },
+    4: { open: 9, lastSlot: 17 },
+    5: { open: 9, lastSlot: 17 },
+    6: { open: 10, lastSlot: 13 }     // sábado 10:00 – 14:00
   };
-  var SLOT_MINUTES = 30;
+  var SLOT_MINUTES = 60;
   var MAX_DAYS_AHEAD = 60;
+  // Minutos de anticipación mínima para citas del mismo día
+  var MIN_LEAD_MINUTES = 60;
+
+  var TYPE_LABELS = {
+    asesoria: "asesoría para elegir equipo",
+    demo: "demostración",
+    cata: "cata de café",
+    servicio: "cita de servicio técnico"
+  };
+  var MODE_LABELS = {
+    showroom: "en nuestro showroom",
+    visita: "en tu negocio",
+    video: "por videollamada"
+  };
 
   var nav = document.getElementById("nav");
   var form = document.getElementById("booking-form");
@@ -67,14 +86,12 @@
 
   /* ---------- Horarios disponibles según la fecha ---------- */
   function getSlots(value) {
-    var date = parseISODate(value);
-    var day = date.getDay();
-    var hours = (day === 0 || day === 6) ? SCHEDULE.weekend : SCHEDULE.weekday;
+    var hours = SCHEDULE[parseISODate(value).getDay()];
     var slots = [];
+    if (!hours) return slots;
     var now = new Date();
     var isToday = toISODate(now) === value;
-    // Pedimos al menos 30 min de anticipación para reservas del mismo día
-    var minMinutes = now.getHours() * 60 + now.getMinutes() + 30;
+    var minMinutes = now.getHours() * 60 + now.getMinutes() + MIN_LEAD_MINUTES;
 
     for (var m = hours.open * 60; m <= hours.lastSlot * 60; m += SLOT_MINUTES) {
       if (isToday && m < minMinutes) continue;
@@ -96,7 +113,7 @@
     var slots = getSlots(value);
     if (slots.length === 0) {
       timeSelect.disabled = true;
-      timeSelect.appendChild(new Option("Sin horarios hoy", ""));
+      timeSelect.appendChild(new Option("Sin horarios", ""));
       return;
     }
 
@@ -127,15 +144,15 @@
       if (!v) return "Elige una fecha.";
       if (v < dateInput.min) return "La fecha ya pasó.";
       if (v > dateInput.max) return "Reservamos con hasta " + MAX_DAYS_AHEAD + " días de anticipación.";
+      if (!SCHEDULE[parseISODate(v).getDay()]) return "Los domingos no atendemos. Elige otro día.";
       if (getSlots(v).length === 0) return "Ya no hay horarios para hoy. Prueba otro día.";
       return "";
     },
     time: function (v) {
       return v ? "" : "Elige una hora.";
     },
-    guests: function (v) {
-      var n = Number(v);
-      return n >= 1 && n <= 8 ? "" : "Entre 1 y 8 personas.";
+    type: function (v) {
+      return TYPE_LABELS[v] ? "" : "Elige el tipo de cita.";
     }
   };
 
@@ -174,11 +191,13 @@
 
     var data = {
       name: form.elements.name.value.trim(),
+      company: form.elements.company.value.trim(),
       email: form.elements.email.value.trim(),
       phone: form.elements.phone.value.trim(),
+      type: form.elements.type.value,
+      mode: form.elements.mode.value,
       date: form.elements.date.value,
       time: form.elements.time.value,
-      guests: Number(form.elements.guests.value),
       notes: form.elements.notes.value.trim()
     };
 
@@ -189,18 +208,18 @@
     submitBooking(data)
       .then(function () { showSuccess(data); })
       .catch(function () {
-        alert("No pudimos registrar tu reservación. Inténtalo de nuevo o llámanos.");
+        alert("No pudimos agendar tu cita. Inténtalo de nuevo o llámanos.");
       })
       .finally(function () {
         button.disabled = false;
-        button.textContent = "Confirmar reservación";
+        button.textContent = "Agendar cita";
       });
   });
 
   /*
    * Punto de integración: sustituye esta función por la llamada a tu backend
    * o servicio de formularios, por ejemplo:
-   *   return fetch("https://tu-api.com/reservas", {
+   *   return fetch("https://tu-api.com/citas", {
    *     method: "POST",
    *     headers: { "Content-Type": "application/json" },
    *     body: JSON.stringify(data)
@@ -211,11 +230,10 @@
   }
 
   function showSuccess(data) {
-    var people = data.guests === 1 ? "1 persona" : data.guests + " personas";
     var firstName = data.name.split(" ")[0];
     document.getElementById("success-summary").textContent =
-      "Gracias, " + firstName + ". Te esperamos el " + formatLongDate(data.date).toLowerCase() +
-      " a las " + data.time + " para " + people + ".";
+      "Gracias, " + firstName + ". Tu " + TYPE_LABELS[data.type] + " quedó agendada el " +
+      formatLongDate(data.date).toLowerCase() + " a las " + data.time + ", " + MODE_LABELS[data.mode] + ".";
     document.getElementById("success-email").textContent = data.email;
 
     form.hidden = true;
