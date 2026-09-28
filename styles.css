@@ -118,8 +118,8 @@ h1, h2, h3, p { margin: 0; }
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
 }
-.link-arrow span { transition: transform .25s var(--ease); }
-.link-arrow:hover span { transform: translateX(4px); }
+.link-arrow span[aria-hidden] { transition: transform .25s var(--ease); }
+.link-arrow:hover span[aria-hidden] { transform: translateX(4px); }
 
 /* ---------- Navegación ---------- */
 .nav {
@@ -145,6 +145,26 @@ h1, h2, h3, p { margin: 0; }
 .nav__links { display: flex; gap: 36px; font-size: 14px; }
 .nav__links a { color: var(--ink-soft); transition: color .2s; }
 .nav__links a:hover { color: var(--ink); }
+.nav__actions { display: flex; align-items: center; gap: 10px; }
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 500 14px/1 "Inter", "Noto Sans SC", system-ui, sans-serif;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.lang-toggle:hover { border-color: var(--ink); }
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .brand { display: inline-flex; align-items: center; gap: 12px; }
 .brand__mark {
@@ -518,6 +538,17 @@ fieldset.field legend {
 .footer__social { display: flex; gap: 24px; }
 .footer__social a:hover { color: var(--bg); }
 
+/* ---------- Chino mandarín ---------- */
+html[lang="zh-CN"] {
+  --font-display: "Cormorant Garamond", "Noto Serif SC", "Songti SC", serif;
+  --font-body: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+html[lang="zh-CN"] body { line-height: 1.8; }
+html[lang="zh-CN"] .hero__title { line-height: 1.25; letter-spacing: .02em; font-size: clamp(40px, 6.4vw, 76px); }
+html[lang="zh-CN"] .hero__title em { font-style: normal; }
+html[lang="zh-CN"] .section__title { line-height: 1.35; letter-spacing: .02em; }
+html[lang="zh-CN"] .eyebrow { letter-spacing: .12em; }
+
 /* ---------- Animación de entrada ---------- */
 .reveal {
   opacity: 0;
@@ -552,6 +583,11 @@ fieldset.field legend {
   :root { --nav-h: 64px; }
   .container { padding: 0 16px; }
   .nav__links { display: none; }
+  .nav__inner { gap: 12px; }
+  .nav__actions { gap: 8px; }
+  .nav__actions .btn--small { padding: 0 16px; }
+  .lang-toggle { min-width: 44px; padding: 0 10px; }
+  .brand { gap: 10px; }
   .brand__name { font-size: 20px; }
   .section { padding: 88px 0; }
   .section__head { margin-bottom: 44px; }

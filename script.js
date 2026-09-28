@@ -16,18 +16,9 @@
   // Minutos de anticipación mínima para citas del mismo día
   var MIN_LEAD_MINUTES = 60;
 
-  var TYPE_LABELS = {
-    asesoria: "asesoría para elegir equipo",
-    demo: "demostración",
-    cata: "cata de café",
-    servicio: "cita de servicio técnico"
-  };
-  var MODE_LABELS = {
-    showroom: "en nuestro showroom",
-    visita: "en tu negocio",
-    video: "por videollamada"
-  };
+  var APPOINTMENT_TYPES = ["asesoria", "demo", "cata", "servicio"];
 
+  var t = window.I18N.t;
   var nav = document.getElementById("nav");
   var form = document.getElementById("booking-form");
   var success = document.getElementById("booking-success");
@@ -72,10 +63,9 @@
   }
 
   function formatLongDate(value) {
-    var text = parseISODate(value).toLocaleDateString("es-MX", {
+    return parseISODate(value).toLocaleDateString(window.I18N.locale(), {
       weekday: "long", day: "numeric", month: "long"
     });
-    return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
   var today = new Date();
@@ -102,26 +92,29 @@
 
   function populateTimes() {
     var value = dateInput.value;
+    var previous = timeSelect.value;
     timeSelect.innerHTML = "";
 
     if (!value) {
       timeSelect.disabled = true;
-      timeSelect.appendChild(new Option("Elige una fecha", ""));
+      timeSelect.appendChild(new Option(t("time.pickDate"), ""));
       return;
     }
 
     var slots = getSlots(value);
     if (slots.length === 0) {
       timeSelect.disabled = true;
-      timeSelect.appendChild(new Option("Sin horarios", ""));
+      timeSelect.appendChild(new Option(t("time.none"), ""));
       return;
     }
 
     timeSelect.disabled = false;
-    timeSelect.appendChild(new Option("Selecciona", ""));
+    timeSelect.appendChild(new Option(t("time.select"), ""));
     slots.forEach(function (slot) {
       timeSelect.appendChild(new Option(slot, slot));
     });
+    // Conserva la hora elegida si sigue disponible (p. ej. al cambiar de idioma)
+    if (slots.indexOf(previous) !== -1) timeSelect.value = previous;
   }
 
   dateInput.addEventListener("change", function () {
@@ -132,27 +125,27 @@
   /* ---------- Validación ---------- */
   var validators = {
     name: function (v) {
-      return v.trim().length >= 2 ? "" : "Escribe tu nombre.";
+      return v.trim().length >= 2 ? "" : t("err.name");
     },
     email: function (v) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : "Escribe un correo válido.";
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? "" : t("err.email");
     },
     phone: function (v) {
-      return v.replace(/\D/g, "").length >= 8 ? "" : "Escribe un teléfono válido.";
+      return v.replace(/\D/g, "").length >= 8 ? "" : t("err.phone");
     },
     date: function (v) {
-      if (!v) return "Elige una fecha.";
-      if (v < dateInput.min) return "La fecha ya pasó.";
-      if (v > dateInput.max) return "Reservamos con hasta " + MAX_DAYS_AHEAD + " días de anticipación.";
-      if (!SCHEDULE[parseISODate(v).getDay()]) return "Los domingos no atendemos. Elige otro día.";
-      if (getSlots(v).length === 0) return "Ya no hay horarios para hoy. Prueba otro día.";
+      if (!v) return t("err.dateEmpty");
+      if (v < dateInput.min) return t("err.datePast");
+      if (v > dateInput.max) return t("err.dateMax", { days: MAX_DAYS_AHEAD });
+      if (!SCHEDULE[parseISODate(v).getDay()]) return t("err.sunday");
+      if (getSlots(v).length === 0) return t("err.today");
       return "";
     },
     time: function (v) {
-      return v ? "" : "Elige una hora.";
+      return v ? "" : t("err.time");
     },
     type: function (v) {
-      return TYPE_LABELS[v] ? "" : "Elige el tipo de cita.";
+      return APPOINTMENT_TYPES.indexOf(v) !== -1 ? "" : t("err.type");
     }
   };
 
@@ -203,16 +196,16 @@
 
     var button = form.querySelector('button[type="submit"]');
     button.disabled = true;
-    button.textContent = "Enviando…";
+    button.textContent = t("submit.sending");
 
     submitBooking(data)
       .then(function () { showSuccess(data); })
       .catch(function () {
-        alert("No pudimos agendar tu cita. Inténtalo de nuevo o llámanos.");
+        alert(t("submit.error"));
       })
       .finally(function () {
         button.disabled = false;
-        button.textContent = "Agendar cita";
+        button.textContent = t("form.submit");
       });
   });
 
@@ -229,17 +222,38 @@
     return new Promise(function (resolve) { setTimeout(resolve, 700); });
   }
 
-  function showSuccess(data) {
-    var firstName = data.name.split(" ")[0];
-    document.getElementById("success-summary").textContent =
-      "Gracias, " + firstName + ". Tu " + TYPE_LABELS[data.type] + " quedó agendada el " +
-      formatLongDate(data.date).toLowerCase() + " a las " + data.time + ", " + MODE_LABELS[data.mode] + ".";
-    document.getElementById("success-email").textContent = data.email;
+  var lastBooking = null;
 
+  function renderSummary() {
+    if (!lastBooking) return;
+    document.getElementById("success-summary").textContent = t("summary", {
+      name: lastBooking.name.split(" ")[0],
+      type: t("summary.type." + lastBooking.type),
+      date: formatLongDate(lastBooking.date),
+      time: lastBooking.time,
+      mode: t("summary.mode." + lastBooking.mode)
+    });
+    document.getElementById("success-email").textContent = lastBooking.email;
+  }
+
+  function showSuccess(data) {
+    lastBooking = data;
+    renderSummary();
     form.hidden = true;
     success.hidden = false;
     success.focus();
   }
+
+  /* ---------- Cambio de idioma: actualiza los textos generados aquí ---------- */
+  window.I18N.onChange(function () {
+    populateTimes();
+    form.querySelectorAll(".field.has-error").forEach(function (field) {
+      var el = field.querySelector("input, select");
+      if (el) validateField(el);
+    });
+    renderSummary();
+  });
+  populateTimes();
 
   document.getElementById("booking-reset").addEventListener("click", function () {
     form.reset();
@@ -249,6 +263,7 @@
       var err = f.querySelector(".field__error");
       if (err) err.textContent = "";
     });
+    lastBooking = null;
     success.hidden = true;
     form.hidden = false;
     form.elements.name.focus();
