@@ -1,0 +1,4 @@
+# Archivos que no deben publicarse en el sitio
+.claude
+README.md
+.gitignore
